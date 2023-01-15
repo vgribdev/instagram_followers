@@ -27,13 +27,6 @@ export const checkDifferences = (following: User[], followers: User[]) => {
 export const jsonReadFile = (fileName: string) =>
     JSON.parse(fs.readFileSync(fileName).toString())
 
-/**
- * Retrieves the value of an environment variable and throws an error if it's not defined
- * @param {string} key - The key of the environment variable to retrieve
- * @returns {string} - The value of the environment variable
- * @throws {Error} - Will throw an error if the environment variable is not defined
- */
-
 export class EnvKeyNotDefinedError extends Error {
     constructor(key: string) {
         super(key)
@@ -41,6 +34,12 @@ export class EnvKeyNotDefinedError extends Error {
     }
 }
 
+/**
+ * Retrieves the value of an environment variable and throws an error if it's not defined
+ * @param {string} key - The key of the environment variable to retrieve
+ * @returns {string} - The value of the environment variable
+ * @throws {Error} - Will throw an error if the environment variable is not defined
+ */
 export const getFromEnvOrThrow = (key: string) => {
     const value = process.env[key]
     if (value === undefined) {
